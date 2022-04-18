@@ -3,13 +3,13 @@ const {
   PHASE_PRODUCTION_BUILD,
 } = require('next/constants')
 
-// This uses phases as outlined here: https://nextjs.org/docs/#custom-configuration
+// Для этого используются этапы, описанные здесь: https://nextjs.org/docs/#custom-configuration
 module.exports = (phase) => {
-  // when started in development mode `next dev` or `npm run dev` regardless of the value of STAGING environmental variable
+  // при запуске в режиме разработки `next dev` или `npm run dev` независимо от значения переменной окружения STAGING
   const isDev = phase === PHASE_DEVELOPMENT_SERVER
-  // when `next build` or `npm run build` is used
+  // когда используется `next build` или `npm run build`
   const isProd = phase === PHASE_PRODUCTION_BUILD && process.env.STAGING !== '1'
-  // when `next build` or `npm run build` is used
+  // когда используется `next build` или `npm run build`
   const isStaging =
     phase === PHASE_PRODUCTION_BUILD && process.env.STAGING === '1'
 
